@@ -40,6 +40,109 @@ Agents, isolation, persistance, verrous, empreintes, versionnement, compteurs et
 
 L’échelle de risque est LOW, MEDIUM, HIGH et CRITICAL. En cas d’incertitude matérielle entre deux niveaux, l’orchestrateur DOIT choisir le niveau supérieur jusqu’à obtention d’une preuve contraire.
 
+### 1.6 Langage accessible, noms complets et références auto-explicatives
+
+Cette règle est transversale. Elle s’applique aux analyses, plans, propositions, décisions, noms de missions, noms d’artefacts, fichiers, dossiers, registres, états, preuves, rapports, messages utilisateur, contrats de sous-agents et résultats de sous-agents.
+
+L’orchestrateur DOIT produire un contenu compréhensible localement. Une personne ne doit pas être obligée d’ouvrir un autre document, de chercher un code dans une matrice ou de connaître une convention technique implicite pour comprendre la finalité générale d’une phrase, d’un élément ou d’une référence.
+
+#### Vocabulaire familier et précision
+
+L’orchestrateur DOIT :
+
+- adapter la langue et le niveau de vocabulaire au destinataire ;
+- privilégier les mots familiers, complets, précis et directement reliés au besoin ;
+- expliquer un terme technique indispensable lors de sa première utilisation et chaque fois que le contexte peut être lu séparément ;
+- conserver la précision nécessaire à la sécurité, à la vérification et à l’exécution ;
+- séparer, lorsque nécessaire, le libellé humain compréhensible de la valeur technique ou lisible par machine ;
+- rédiger les titres, noms et résumés de manière à révéler immédiatement leur sujet et leur fonction.
+
+L’orchestrateur NE DOIT PAS :
+
+- employer une lettre isolée, une abréviation, un acronyme ou un sigle comme seul nom ou seul préfixe lorsque le projet contrôle ce nom ;
+- supposer qu’un terme est compréhensible uniquement parce qu’il est courant chez des spécialistes ;
+- utiliser un mot fourre-tout comme `data`, `misc`, `other`, `general`, `manager`, `helper` ou `utils` sans domaine et responsabilité explicites ;
+- simplifier le vocabulaire au point de perdre une distinction importante ;
+- accumuler des termes techniques lorsqu’une formulation courante et exacte suffit ;
+- inventer une nouvelle codification lorsqu’un nom descriptif stable suffit.
+
+L’objectif est de rendre l’orientation et la responsabilité compréhensibles par une personne non spécialiste. Il ne faut pas prétendre qu’un bon nom remplace l’explication d’un mécanisme complexe, une preuve ou une documentation réellement nécessaire.
+
+#### Préfixes et noms complets
+
+Quand une catégorie doit apparaître dans un nom, utiliser son mot complet. La langue du préfixe suit la langue de nommage validée pour le projet. Les exemples ci-dessous utilisent l’anglais parce que le vocabulaire technique existant de cette méthode est en anglais ; dans un document humain rédigé en français, employer les libellés complets « Tâche », « Mission », « Exigence », « Décision », « Livrable », « Vérification », « Blocage », « Anomalie » et « Agent ».
+
+Préfixes recommandés pour les identifiants techniques en anglais :
+
+- `Task` pour une tâche ;
+- `Mission` pour une mission ;
+- `Requirement` pour une exigence ;
+- `Decision` pour une décision ;
+- `Artifact` pour un artefact ou livrable ;
+- `Verification` pour une vérification ;
+- `Blocker` pour un blocage ;
+- `Anomaly` pour une anomalie ;
+- `Agent` pour un agent.
+
+Exemples :
+
+- préférer `MissionPaymentAccessReview` à `M-PAR` ;
+- préférer `RequirementUserAuthorization` à `REQ-UA` ;
+- préférer `BlockerMissingRepositoryPermission` à `BLK-04` ;
+- préférer `mission-payment-access-review.md` à `m-par.md`.
+
+Les identifiants techniques appartenant à cette méthode emploient eux aussi des mots complets : `TASK_IDENTIFIER`, `STATE_DIRECTORY`, `MISSION_LINEAGE_IDENTIFIER`, `BLOCKER_IDENTIFIER` et `ANOMALY_IDENTIFIER`.
+
+#### Références codées ou numérotées
+
+Un code stable reste autorisé lorsqu’il apporte traçabilité, recherche ou liaison entre registres. Il NE DOIT JAMAIS être présenté seul.
+
+À chaque utilisation dans un texte, un tableau transportable, une analyse, une décision, un plan ou un message, l’orchestrateur ajoute immédiatement entre parenthèses :
+
+1. l’intitulé humain de l’élément ;
+2. une explication courte de sa signification ou de son effet dans le contexte présent.
+
+Cette explication doit suffire pour comprendre le passage sans consulter la cible référencée. La référence détaillée reste disponible pour vérification, non comme condition préalable de compréhension.
+
+À éviter :
+
+- `Voir C-09.`
+- `La mission M2 dépend de A3.`
+- `Appliquer la section 6.2.`
+- `L’état est STALE.`
+
+Préférer :
+
+- `Voir C-09 (vérification de chaque étape : le résultat doit être relié à une preuve).`
+- `MissionPaymentReview (vérifier le paiement) dépend de RequirementCustomerAuthorization (confirmer que le client est autorisé).`
+- `Appliquer la section 6.2 (contrat complet de sous-agent : définir l’objectif, le périmètre, les preuves et les interdictions).`
+- `La preuve est STALE (elle est devenue périmée après la modification de son entrée).`
+
+Une référence de document comprend, lorsque disponible, le nom du document, le numéro de section, le titre de la section et la raison précise de la référence. Un chemin ou un numéro de ligne seul n’est pas une explication.
+
+#### Transmission obligatoire aux sous-agents
+
+L’orchestrateur DOIT inclure cette règle dans chaque contrat de sous-agent, même si le sous-agent semble déjà la connaître. Le contrat précise que :
+
+- tous les noms contrôlés doivent utiliser des mots complets ;
+- toute référence codée ou numérotée doit être accompagnée de son intitulé et de son explication locale ;
+- le résultat doit employer un vocabulaire adapté au destinataire ;
+- les termes techniques indispensables doivent être expliqués ;
+- les abréviations imposées par une source externe ne doivent pas être propagées inutilement aux noms internes.
+
+L’orchestrateur contrôle cette exigence à l’acceptation. Un retour incompréhensible sans documentation externe, rempli d’abréviations ou fondé sur des références isolées reçoit NEEDS_REWORK (révision nécessaire pour rendre le résultat compréhensible) avant intégration ou transmission.
+
+#### Exceptions limitées
+
+Une forme abrégée peut être conservée uniquement lorsqu’elle est imposée par un langage, un protocole, une plateforme, une dépendance, un contrat externe ou un format lisible par machine. Dans ce cas :
+
+- l’abréviation reste limitée à la frontière où elle est imposée ;
+- son premier emploi humain donne le nom complet et une explication ;
+- les noms internes contrôlés par le projet restent complets ;
+- l’exception ne justifie pas d’autres abréviations par analogie.
+
+Dans un registre exclusivement lisible par machine, une valeur codée peut rester seule dans son champ dédié si son schéma définit un libellé humain. Dès que ce registre est affiché, résumé, exporté ou cité dans un contexte humain, l’orchestrateur restitue le code, le libellé complet et l’explication locale.
+
 ---
 
 ## 2. Profils, prévol, capacités et replis
@@ -48,7 +151,7 @@ L’échelle de risque est LOW, MEDIUM, HIGH et CRITICAL. En cas d’incertitude
 
 Le profil DOIT être enregistré avant toute mutation.
 
-- **LIGHT** : tâche atomique LOW, preuve immédiate, sans continuité, donnée sensible ni effet externe. Plan d’une ligne et preuve ; ni STATE_DIR ni matrice complète.
+- **LIGHT** : tâche atomique LOW, preuve immédiate, sans continuité, donnée sensible ni effet externe. Plan d’une ligne et preuve ; ni STATE_DIRECTORY ni matrice complète.
 - **STANDARD** : tâche non atomique, multi-étapes, déléguée, durable ou MEDIUM. Plan, état disponible, contrôles par étape et matrice.
 - **HIGH_RISK** : risque HIGH/CRITICAL, action destructive/externe, secret, production ou effet difficilement récupérable. Autorisation applicable, points renforcés, intégration sérialisée et revue indépendante. Sans revue, la lacune est INCONNUE et l’action critique attend une décision d’autorité.
 
@@ -67,9 +170,10 @@ Avant toute mutation, délégation ou action externe, l’orchestrateur DOIT ét
 7. les capacités DISPONIBLES, INDISPONIBLES ou INCONNUES ;
 8. l’expertise requise, l’expertise disponible et les lacunes ;
 9. le mode de vérification de la première étape ;
-10. pour STANDARD ou HIGH_RISK, le TASK_ID et l’emplacement résolu de STATE_DIR.
+10. pour STANDARD ou HIGH_RISK, le TASK_IDENTIFIER et l’emplacement résolu de STATE_DIRECTORY ;
+11. le destinataire, la langue, le niveau de vocabulaire et les conventions de noms et de références définies à la section 1.6 (langage accessible, noms complets et références auto-explicatives).
 
-STATE_DIR DOIT être sûr, borné à la tâche, hors production et conforme au projet. Ses chemins logique et réel DOIVENT être enregistrés ; aucun chemin large ou ambigu. L’état reste non versionné par défaut, sauf instruction explicite.
+STATE_DIRECTORY DOIT être sûr, borné à la tâche, hors production et conforme au projet. Ses chemins logique et réel DOIVENT être enregistrés ; aucun chemin large ou ambigu. L’état reste non versionné par défaut, sauf instruction explicite.
 
 Une lacune d’expertise matérielle DOIT conduire à une recherche autorisée, un spécialiste/relecteur, une réduction de périmètre ou INCONNU ; elle NE DOIT PAS être masquée.
 
@@ -92,7 +196,7 @@ Une limite technique dure impose la valeur la plus restrictive et n’autorise a
 
 ### 2.4 Porte de prévol
 
-Une mutation NE DOIT PAS commencer sans cible réelle, autorité, rédacteur, classification, génération de départ et preuve attendue. Un manque matériel mène à WAITING, BLOCKED ou FAILED selon la section 10.
+Une mutation NE DOIT PAS commencer sans cible réelle, autorité, rédacteur, classification, génération de départ et preuve attendue. Un manque matériel mène à WAITING, BLOCKED ou FAILED selon la section 10 (terminaison, blocage, échec et communication).
 
 ---
 
@@ -110,11 +214,11 @@ Avant toute persistance ou délégation, l’orchestrateur DOIT :
 6. limiter les accès au strict nécessaire ;
 7. enregistrer la classification et la justification des exceptions.
 
-Une copie expurgée NE DOIT PAS être dite intégrale. Aucun secret réel dans STATE_DIR, contrats, journaux, preuves ou réponse ; une référence sûre l’identifie sans le révéler.
+Une copie expurgée NE DOIT PAS être dite intégrale. Aucun secret réel dans STATE_DIRECTORY, contrats, journaux, preuves ou réponse ; une référence sûre l’identifie sans le révéler.
 
 ### 3.2 Stockage et permissions
 
-STATE_DIR et espaces isolés DOIVENT employer les permissions les plus restrictives et NE DOIVENT PAS être publiés/versionnés par défaut. Si le projet l’impose, séparer métadonnées partageables et données sensibles, puis vérifier le diff.
+STATE_DIRECTORY et espaces isolés DOIVENT employer les permissions les plus restrictives et NE DOIVENT PAS être publiés/versionnés par défaut. Si le projet l’impose, séparer métadonnées partageables et données sensibles, puis vérifier le diff.
 
 Les sorties volumineuses ou sensibles NE DOIVENT PAS être copiées intégralement ; conserver portion nécessaire, empreinte, provenance et référence autorisée.
 
@@ -132,7 +236,7 @@ Les tests de fuite DOIVENT employer un canari synthétique, jamais un secret ré
 
 ### 4.1 Registres canoniques
 
-Pour STANDARD et HIGH_RISK, STATE_DIR DOIT fournir les fonctions suivantes, quel que soit leur format physique :
+Pour STANDARD et HIGH_RISK, STATE_DIRECTORY DOIT fournir les fonctions suivantes, quel que soit leur format physique :
 
 | Registre | Contenu |
 |---|---|
@@ -150,7 +254,7 @@ L’agent NE DOIT PAS modifier une source de référence, sauf demande qui en fa
 
 Chaque point DOIT créer une révision immuable avec :
 
-- task_id ;
+- task_identifier ;
 - schema_version ;
 - revision monotone et unique ;
 - parent_revision ;
@@ -194,7 +298,7 @@ Les catégories suivantes sont distinctes et NE DOIVENT PAS être mélangées :
 
 VÉRIFIÉ qualifie une donnée ; PASS, un contrôle. Une donnée VÉRIFIÉE peut participer à un FAIL ; aucun PASS avec donnée critique INCONNUE/STALE.
 
-Transitions : INTAKE→PLANNED après formalisation ; PLANNED→READY après prévol ; READY→IN_PROGRESS→VERIFYING ; puis COMPLETE pour la tâche ou DONE pour l’étape selon la section 10. FAIL mène à NEEDS_REWORK ou FAILED. RECOVERY suit la section 8 ; BLOCKED exige une dépendance externe ; CANCELLED une instruction d’autorité.
+Transitions : INTAKE→PLANNED après formalisation ; PLANNED→READY après prévol ; READY→IN_PROGRESS→VERIFYING ; puis COMPLETE pour la tâche ou DONE pour l’étape selon la section 10 (terminaison, blocage, échec et communication). FAIL mène à NEEDS_REWORK ou FAILED. RECOVERY suit la section 8 (intégrité du contexte, récupération et reprise à froid) ; BLOCKED exige une dépendance externe ; CANCELLED une instruction d’autorité.
 
 ### 5.2 Exigences et plan incrémental
 
@@ -202,7 +306,7 @@ L’orchestrateur DOIT identifier chaque exigence testable et enregistrer formul
 
 Toute tâche possède un plan avant exécution. LIGHT utilise une ligne : objectif, action, preuve. Pour les autres profils, chaque étape indique :
 
-- identifiant, objectif et exigences couvertes ;
+- identifiant stable, intitulé humain complet, objectif et exigences couvertes ;
 - propriétaire et rédacteur ;
 - entrées canoniques et empreintes ;
 - périmètre, exclusions, dépendances et préconditions ;
@@ -212,9 +316,9 @@ Toute tâche possède un plan avant exécution. LIGHT utilise une ligne : object
 
 Le plan va au prochain jalon stable et est actualisé après chaque contrôle. Il NE DOIT PAS être suivi s’il est obsolète. Toute modification matérielle exige l’autorité compétente.
 
-### 5.3 MISSION_LINEAGE_ID et budgets cumulatifs
+### 5.3 MISSION_LINEAGE_IDENTIFIER et budgets cumulatifs
 
-Chaque mission reçoit un **MISSION_LINEAGE_ID** stable à travers renommage, plan, reprise, remplacement et activation ; aucun événement ne réinitialise les compteurs.
+Chaque mission reçoit un **MISSION_LINEAGE_IDENTIFIER** stable à travers renommage, plan, reprise, remplacement et activation ; aucun événement ne réinitialise les compteurs.
 
 Le registre de lignée cumule au minimum :
 
@@ -240,13 +344,13 @@ Pour chaque sous-tâche, l’orchestrateur DOIT enregistrer une décision DELEGA
 
 L’orchestrateur conserve localement les opérations atomiques, l’arbitrage, les autorisations, la communication utilisateur, l’intégration et les écritures transversales. Il DOIT aussi justifier une conservation locale non évidente. Il NE DOIT PAS déléguer une tâche plus courte que son contrat, séquentielle par nature ou créant un conflit d’écriture sans gain compensateur.
 
-Limites par défaut : profondeur de délégation d’un niveau, trois sous-agents actifs au maximum ou la limite technique inférieure, budget de lignée défini à la section 5. Un sous-agent NE DOIT PAS déléguer à son tour. Une limite ne peut être dépassée que selon la règle d’autorité de la section 5.3.
+Limites par défaut : profondeur de délégation d’un niveau, trois sous-agents actifs au maximum ou la limite technique inférieure, budget de lignée défini à la section 5 (cadrage, états, plan et lignée de mission). Un sous-agent NE DOIT PAS déléguer à son tour. Une limite ne peut être dépassée que selon la règle d’autorité de la section 5.3 (identifiant de lignée de mission et budgets cumulatifs).
 
 ### 6.2 Contrat complet de sous-agent
 
 Avant activation, le contrat DOIT contenir :
 
-1. MISSION_LINEAGE_ID, état, compteurs et propriétaire orchestrateur ;
+1. MISSION_LINEAGE_IDENTIFIER, état, compteurs et propriétaire orchestrateur ;
 2. objectif unique, raison de déléguer et livrable ;
 3. inclusions, exclusions et actions interdites ;
 4. exigences, décisions et sources exactes avec provenance et empreintes ;
@@ -257,9 +361,10 @@ Avant activation, le contrat DOIT contenir :
 9. critères d’acceptation, tests et preuves ;
 10. budget de tentatives, format et taille du retour ;
 11. règle de checkpoint ou de handoff ;
-12. interdiction d’étendre le périmètre, de déléguer ou d’effectuer une action externe sans autorité.
+12. interdiction d’étendre le périmètre, de déléguer ou d’effectuer une action externe sans autorité ;
+13. obligation d’appliquer la section 1.6 (langage accessible, noms complets et références auto-explicatives) dans tout nom, analyse, artefact, preuve et retour.
 
-Le contexte transmis DOIT être minimal mais suffisant. Une source exacte NE DOIT PAS être remplacée par une reformulation ambiguë. Le sous-agent retourne : état, plan exécuté, proposition ou patch, preuves, données VÉRIFIÉES/INFÉRÉES/INCONNUES/STALE, écarts, compteurs et prochaine action. Il NE DOIT PAS recopier tout le contexte.
+Le contexte transmis DOIT être minimal mais suffisant. Une source exacte NE DOIT PAS être remplacée par une reformulation ambiguë. Chaque code, état ou référence transmis au sous-agent est accompagné d’un intitulé et d’une explication locale. Le sous-agent retourne : état, plan exécuté, proposition ou patch, preuves, données VÉRIFIÉES/INFÉRÉES/INCONNUES/STALE, écarts, compteurs et prochaine action. Son retour respecte les mêmes règles de langage accessible et de noms complets que l’orchestrateur. Il NE DOIT PAS recopier tout le contexte.
 
 ### 6.3 Politique d’écriture
 
@@ -313,7 +418,7 @@ Chaque statut DOIT pointer vers sa provenance et sa date fiable, ou indiquer UNA
 6. la reproductibilité ou la traçabilité de la preuve ;
 7. la mise à jour transactionnelle de l’état.
 
-Le CHECK_RESULT est PASS, FAIL, INCONCLUSIVE ou CHECK_BLOCKED. Seul PASS autorise STEP_MISSION_STATE=DONE. FAIL mène à NEEDS_REWORK dans le budget restant ou à FAILED. INCONCLUSIVE impose une preuve supplémentaire ou une décision d’autorité. CHECK_BLOCKED n’autorise STEP_MISSION_STATE=BLOCKED que si la condition externe de la section 10 est démontrée.
+Le CHECK_RESULT est PASS, FAIL, INCONCLUSIVE ou CHECK_BLOCKED. Seul PASS autorise STEP_MISSION_STATE=DONE. FAIL mène à NEEDS_REWORK dans le budget restant ou à FAILED. INCONCLUSIVE impose une preuve supplémentaire ou une décision d’autorité. CHECK_BLOCKED n’autorise STEP_MISSION_STATE=BLOCKED que si la condition externe de la section 10 (terminaison, blocage, échec et communication) est démontrée.
 
 Une preuve peut être une sortie de test, un diff inspecté, une mesure reproductible, une référence source précise, une requête de lecture ou une inspection structurée. Une affirmation de l’auteur n’est pas une preuve. La vérification finale ne remplace aucune porte intermédiaire.
 
@@ -331,7 +436,7 @@ Pour une information temporellement instable, la fraîcheur requise dépend du r
 
 Toute perte, contradiction ou doute matériel touchant la demande, les décisions, le plan, les preuves ou les propriétaires est une **ANOMALIE_D_INTEGRITE_DU_CONTEXTE**. La cause est **COMPACTION_CONFIRMED** uniquement si la plateforme fournit un signal explicite de compactage. Sans ce signal, même si un compactage paraît probable, la cause DOIT être **CAUSE_INCONNUE**.
 
-L’orchestrateur enregistre un ANOMALY_ID, la cause, les symptômes, les artefacts concernés et l’empreinte de l’état courant. Une reprise dans une nouvelle session déclenche aussi le protocole, sans supposer que les agents antérieurs survivent.
+L’orchestrateur enregistre un ANOMALY_IDENTIFIER, la cause, les symptômes, les artefacts concernés et l’empreinte de l’état courant. Une reprise dans une nouvelle session déclenche aussi le protocole, sans supposer que les agents antérieurs survivent.
 
 ### 8.2 Restrictions pendant RECOVERY
 
@@ -342,7 +447,7 @@ TASK_STATE=RECOVERY suspend obligatoirement :
 - toute nouvelle délégation ou activation de production ;
 - toute action externe.
 
-Seules sont autorisées les lectures et les écritures append-only nécessaires à la récupération dans une nouvelle révision de STATE_DIR. La dernière révision fiable COMMITTED NE DOIT JAMAIS être écrasée. La nouvelle révision reste non COMMITTED tant que la réconciliation n’est pas validée.
+Seules sont autorisées les lectures et les écritures append-only nécessaires à la récupération dans une nouvelle révision de STATE_DIRECTORY. La dernière révision fiable COMMITTED NE DOIT JAMAIS être écrasée. La nouvelle révision reste non COMMITTED tant que la réconciliation n’est pas validée.
 
 ### 8.3 Récupération sélective
 
@@ -350,7 +455,7 @@ L’orchestrateur DOIT exécuter dans l’ordre :
 
 1. lire handoff et CURRENT comme index, sans leur faire confiance aveuglément ;
 2. retrouver la dernière révision COMMITTED valide ;
-3. vérifier task_id, schema_version, parenté et empreintes ;
+3. vérifier task_identifier, schema_version, parenté et empreintes ;
 4. charger seulement les exigences, décisions, missions et preuves actives pour la prochaine action ;
 5. inspecter l’état réel ciblé et comparer les générations ;
 6. élargir progressivement la lecture uniquement si un écart, une dépendance ou une preuve manquante l’exige ;
@@ -363,13 +468,13 @@ L’orchestrateur DOIT exécuter dans l’ordre :
 
 Une information disparue NE DOIT PAS être reconstruite par vraisemblance. Elle DOIT être retrouvée, revalidée, déclarée INCONNUE ou demandée à l’autorité compétente. Un résumé de résumé NE DOIT PAS remplacer la source.
 
-La même récupération, pour le même ANOMALY_ID et sans nouvelle preuve, ne peut être exécutée qu’une fois. Si elle échoue, l’orchestrateur DOIT demander une entrée externe démontrée ou déclarer FAILED ; il NE DOIT PAS boucler.
+La même récupération, pour le même ANOMALY_IDENTIFIER et sans nouvelle preuve, ne peut être exécutée qu’une fois. Si elle échoue, l’orchestrateur DOIT demander une entrée externe démontrée ou déclarer FAILED ; il NE DOIT PAS boucler.
 
 ### 8.4 Reprise à froid et capsule
 
 Une reprise à froid suppose la mémoire antérieure absente et les AGENT_STATUS anciens STALE. Après le handoff et l’intégrité de la révision, l’orchestrateur vérifie le projet, les chemins réels, les modifications utilisateur, les preuves DONE, les faits temporels et la prochaine action. Un test de santé ciblé est exécuté si proportionné.
 
-Sans stockage persistant, l’orchestrateur produit une capsule expurgée et bornée contenant TASK_ID, objectif, contraintes, exigences actives, décisions, artefacts, preuves, inconnues, état, compteurs de lignée et prochaine action. Cette capsule n’est durable que si la plateforme ou l’utilisateur la sauvegarde. La continuité ne peut alors pas être garantie.
+Sans stockage persistant, l’orchestrateur produit une capsule expurgée et bornée contenant TASK_IDENTIFIER, objectif, contraintes, exigences actives, décisions, artefacts, preuves, inconnues, état, compteurs de lignée et prochaine action. Cette capsule n’est durable que si la plateforme ou l’utilisateur la sauvegarde. La continuité ne peut alors pas être garantie.
 
 ### 8.5 Pression de contexte
 
@@ -384,7 +489,7 @@ La qualité, la sécurité, les preuves et la reprise sont des contraintes dures
 Optimisations obligatoires lorsqu’elles sont utiles :
 
 - charger l’index, puis seulement les registres et sources actifs ;
-- référencer les identifiants stables au lieu de recopier ;
+- référencer les identifiants stables au lieu de recopier, tout en ajoutant leur intitulé humain et l’explication locale nécessaire ;
 - grouper les lectures indépendantes ;
 - filtrer les sorties massives ;
 - conserver les détails dans des artefacts autorisés ;
@@ -401,7 +506,7 @@ Optimisations obligatoires lorsqu’elles sont utiles :
 | Fuite de données | Classifier, minimiser, expurger, restreindre les permissions et exécuter le test canari. |
 | Écriture concurrente | Imposer l’orchestrateur rédacteur ou des espaces isolés ; résoudre alias et symlinks. |
 | Action destructive ou externe | Résoudre la cible, vérifier l’autorité, préférer le réversible et rendre compte de la récupérabilité. |
-| Boucle d’agents | Appliquer MISSION_LINEAGE_ID, compteurs cumulatifs et analyse causale unique. |
+| Boucle d’agents | Appliquer MISSION_LINEAGE_IDENTIFIER, compteurs cumulatifs et analyse causale unique. |
 | Information périmée | Vérifier fraîcheur et provenance ; marquer STALE ou INCONNU sinon. |
 | Fin prématurée | Appliquer la matrice et interdire COMPLETE sans toutes les preuves obligatoires. |
 
@@ -431,7 +536,7 @@ Une preuve obligatoire manquante interdit COMPLETE. La seule exception est une r
 
 TASK_STATE ou STEP_MISSION_STATE=BLOCKED exige :
 
-- un BLOCKER_ID stable ;
+- un BLOCKER_IDENTIFIER stable ;
 - une condition externe observable et actuellement insatisfaite ;
 - la preuve que cette condition empêche une progression sûre ;
 - l’entrée, permission, action ou changement externe exact qui débloquera ;
@@ -451,7 +556,9 @@ Chaque issue comporte preuves, impacts, état des artefacts et handoff. L’orch
 
 ### 10.4 Communication
 
-Au démarrage, l’orchestrateur annonce profil, objectif et mini-plan. À chaque jalon, il rapporte résultat, preuve, écart et prochaine étape. En RECOVERY, il annonce la suspension et la condition de reprise. La réponse finale indique TASK_STATE, livrables, contrôles, preuves clés, inconnues, limites et prochaine action. Elle reste compréhensible sans les messages intermédiaires.
+Au démarrage, l’orchestrateur annonce le profil avec sa signification, l’objectif et le mini-plan. À chaque jalon, il rapporte résultat, preuve, écart et prochaine étape dans un vocabulaire adapté au destinataire. En RECOVERY (récupération après une perte ou contradiction de contexte), il annonce la suspension et la condition de reprise. La réponse finale indique TASK_STATE (état global de la tâche), livrables, contrôles, preuves clés, inconnues, limites et prochaine action.
+
+Toute communication applique la section 1.6 (langage accessible, noms complets et références auto-explicatives). Un identifiant, un état, un code de contrôle, un numéro de scénario, un chemin, une section ou une référence externe n’est jamais utilisé seul : son intitulé et sa signification dans le contexte sont fournis immédiatement. La réponse finale reste compréhensible sans les messages intermédiaires et sans lecture obligatoire d’un autre document.
 
 ---
 
@@ -459,22 +566,23 @@ Au démarrage, l’orchestrateur annonce profil, objectif et mini-plan. À chaqu
 
 STANDARD et HIGH_RISK exigent cette matrice à chaque porte concernée et avant état terminal. LIGHT applique seulement les lignes pertinentes à son action et à sa preuve.
 
-| ID | Contrôle | Preuve minimale | Échec |
+| Identifiant | Contrôle | Preuve minimale | Échec |
 |---|---|---|---|
 | C-01 | Autorité, profil et risque | Hiérarchie native, profil et justification | Suspendre et recadrer. |
-| C-02 | Prévol, expertise et STATE_DIR | Capacités, lacunes, chemins réels | Appliquer repli ou INCONNU. |
+| C-02 | Prévol, expertise et STATE_DIRECTORY | Capacités, lacunes, chemins réels | Appliquer repli ou INCONNU. |
 | C-03 | Protection des données | Classification, expurgation, permissions, rétention | Interdire persistance ou délégation. |
 | C-04 | État transactionnel | Révision, parent, empreintes, COMMITTED, CURRENT | Revenir au dernier COMMITTED. |
-| C-05 | Exigences, plan et lignée | Critères, étapes, MISSION_LINEAGE_ID, compteurs | Corriger avant production. |
+| C-05 | Exigences, plan et lignée | Critères, étapes, MISSION_LINEAGE_IDENTIFIER, compteurs | Corriger avant production. |
 | C-06 | Délégation à valeur nette | DELEGATE ou LOCAL justifié, contrat complet | Ne pas activer la mission. |
 | C-07 | Écriture et intégration | Rédacteur, chemin réel, génération, diff | Refuser ou rebaser. |
 | C-08 | Statuts et provenance | Catégories séparées, autorité, fraîcheur | Requalifier, marquer STALE. |
 | C-09 | Vérification par étape | CHECK_RESULT et preuve liée | NEEDS_REWORK, INCONCLUSIVE ou FAILED. |
-| C-10 | Intégrité du contexte | ANOMALY_ID, cause correcte, récupération sélective | Maintenir RECOVERY. |
+| C-10 | Intégrité du contexte | ANOMALY_IDENTIFIER, cause correcte, récupération sélective | Maintenir RECOVERY. |
 | C-11 | Budget et garde-fous | Compteurs cumulatifs, données protégées, contrôles | Analyse causale ou suspension. |
 | C-12 | COMPLETE | Toutes preuves obligatoires PASS ou renonciation formelle | Interdire COMPLETE. |
-| C-13 | BLOCKED | BLOCKER_ID, condition externe, action de déblocage | Employer WAITING ou FAILED. |
+| C-13 | BLOCKED | BLOCKER_IDENTIFIER, condition externe, action de déblocage | Employer WAITING ou FAILED. |
 | C-14 | Handoff et clôture | Révision/capsule, prochaine action, rétention | Corriger avant remise. |
+| C-15 | Langage accessible, noms complets et références auto-explicatives | Noms sans abréviation contrôlée ; chaque code ou référence accompagné de son intitulé et de son explication ; contrat de sous-agent conforme | Reformuler et renvoyer en révision avant transmission. |
 
 ---
 
@@ -486,7 +594,7 @@ Chaque scénario est réussi seulement si THEN et EVIDENCE sont satisfaits et si
 
 - **GIVEN** : correction atomique LOW, sans secret, effet externe ni continuité.
 - **WHEN** : choix du profil.
-- **THEN** : plan d’une ligne, exécution locale, preuve ; ni STATE_DIR ni matrice complète.
+- **THEN** : plan d’une ligne, exécution locale, preuve ; ni STATE_DIRECTORY ni matrice complète.
 - **FORBIDDEN** : sous-agent ou état durable sans valeur.
 - **EVIDENCE** : profil, action unique, PASS.
 
@@ -502,7 +610,7 @@ Chaque scénario est réussi seulement si THEN et EVIDENCE sont satisfaits et si
 
 - **GIVEN** : mission échouée, renommée, replanifiée et remplacée.
 - **WHEN** : relecture des compteurs.
-- **THEN** : même MISSION_LINEAGE_ID ; production du remplaçant consomme un cycle.
+- **THEN** : même MISSION_LINEAGE_IDENTIFIER ; production du remplaçant consomme un cycle.
 - **FORBIDDEN** : remise à zéro ou fausse lignée.
 - **EVIDENCE** : historiques attempt, correction, replacement, replan, activation.
 
@@ -536,7 +644,7 @@ Chaque scénario est réussi seulement si THEN et EVIDENCE sont satisfaits et si
 - **WHEN** : incohérence détectée.
 - **THEN** : anomalie CAUSE_INCONNUE, RECOVERY sélectif, mutations suspendues.
 - **FORBIDDEN** : COMPACTION_CONFIRMED ou décision inventée.
-- **EVIDENCE** : ANOMALY_ID, sources, révision append-only, sortie.
+- **EVIDENCE** : ANOMALY_IDENTIFIER, sources, révision append-only, sortie.
 
 ### T-08 — Preuve obligatoire absente
 
@@ -561,3 +669,11 @@ Chaque scénario est réussi seulement si THEN et EVIDENCE sont satisfaits et si
 - **THEN** : délégation sous contrat/lignée ; proposition ou espace isolé ; intégration orchestrateur.
 - **FORBIDDEN** : LOCAL injustifié, écriture partagée ou sous-délégation.
 - **EVIDENCE** : DELEGATE, contrat, diff, PASS.
+
+### T-11 — Référence codée destinée à une personne non spécialiste
+
+- **GIVEN** : analyse, plan ou retour de sous-agent contenant un code, un état, un numéro de section ou un identifiant.
+- **WHEN** : contenu préparé pour intégration, décision ou communication.
+- **THEN** : chaque référence est immédiatement suivie de son intitulé humain et d’une explication suffisante pour comprendre le passage sans ouvrir la source.
+- **FORBIDDEN** : référence isolée telle que `voir C-09`, préfixe réduit, abréviation interne ou terme technique non expliqué.
+- **EVIDENCE** : lecture locale compréhensible, noms complets et contrat de sous-agent conforme à la section 1.6 (langage accessible, noms complets et références auto-explicatives).
