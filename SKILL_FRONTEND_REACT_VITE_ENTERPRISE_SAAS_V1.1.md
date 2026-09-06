@@ -263,7 +263,8 @@ Exemples :
 - créer une boucle de `useEffect`;
 - désactiver arbitrairement `react-hooks/exhaustive-deps`;
 - utiliser `any` sans justification ;
-- utiliser un nom vague, générique ou abrégé lorsque ce nom empêche de comprendre directement le rôle métier ou technique de l’élément ;
+- utiliser une abréviation, un acronyme, un sigle ou un préfixe réduit dans un nom contrôlé par le projet ;
+- utiliser un nom vague ou générique qui empêche de comprendre directement le rôle métier ou technique de l’élément ;
 - renommer ou réorganiser du code existant hors du périmètre demandé sous le seul prétexte d’appliquer une convention de nommage ;
 - simuler un bouton avec un `div`;
 - rendre un texte statique éditable ;
@@ -910,7 +911,7 @@ Il est interdit de réexporter automatiquement tout le contenu du module.
 ## 8.14 Manifeste de module
 
 ```ts
-export interface ApplicationModuleManifest {
+export interface InterfaceApplicationModuleManifest {
   id: string;
   name: string;
   version: string;
@@ -1299,11 +1300,11 @@ Une exception doit contenir un commentaire expliquant :
 Préférer :
 
 ```ts
-type AsyncState<T> =
+type TypeAsynchronousState<TypeResultData> =
   | { status: 'idle' }
   | { status: 'pending' }
-  | { status: 'success'; data: T }
-  | { status: 'error'; error: AppError };
+  | { status: 'success'; data: TypeResultData }
+  | { status: 'error'; error: InterfaceApplicationError };
 ```
 
 Éviter les combinaisons contradictoires de booléens.
@@ -1316,114 +1317,153 @@ type AsyncState<T> =
 
 ### Objectif obligatoire
 
-Tout nom créé ou modifié doit aider le lecteur à comprendre immédiatement :
+Tout nom créé ou modifié doit permettre de comprendre immédiatement :
 
 - le domaine métier concerné ;
-- la nature de l’élément ;
+- la catégorie de l’élément ;
 - sa responsabilité principale ;
 - son niveau de portée lorsque celui-ci n’est pas déjà évident par son emplacement.
 
 Cette règle s’applique aux dossiers, fichiers, modules, features, routes, pages, composants, hooks, services, schémas, types, fonctions, variables et constantes.
 
-Le lecteur ne devrait pas avoir à ouvrir le fichier, parcourir toute l’implémentation ou lire une longue documentation pour deviner à quoi sert un élément. La documentation complète le nom ; elle ne doit pas compenser un nom imprécis.
+Une personne qui ne développe pas doit pouvoir parcourir l’arborescence et identifier la finalité générale des éléments sans ouvrir chaque fichier ni lire une documentation volumineuse. Cette exigence concerne l’identification, l’orientation et la compréhension de la responsabilité. Elle ne prétend pas remplacer l’explication du comportement technique détaillé.
 
-### Vocabulaire à utiliser
+La documentation complète un nom clair ; elle ne doit jamais servir à compenser un nom vague, raccourci ou trompeur.
+
+### Mots complets et compréhensibles
 
 L’agent DOIT :
 
-- privilégier les mots métier simples, précis et connus dans le produit ;
-- utiliser le terme le plus court qui reste non ambigu ;
-- nommer d’abord la finalité réelle, puis le mécanisme technique lorsque celui-ci apporte une information utile ;
-- conserver une langue de nommage cohérente dans tout le projet ;
-- développer les acronymes rares ou propres à l’organisation dans le nom ou dans un contexte local immédiatement visible ;
-- qualifier les termes génériques par leur domaine, par exemple `invoice-date.utils.ts` plutôt que `utils.ts` lorsqu’un utilitaire dédié est réellement nécessaire ;
-- employer les termes techniques standards tels que `api`, `route`, `hook`, `schema`, `query` ou `component` uniquement lorsqu’ils décrivent exactement le rôle de l’élément.
+- écrire les mots en entier dans tous les noms contrôlés par le projet ;
+- utiliser un préfixe ou un suffixe composé d’un mot complet lorsque la catégorie de l’élément doit être indiquée ;
+- privilégier des mots métier simples, précis et connus dans le produit ;
+- utiliser le nom le plus court qui reste immédiatement compréhensible et non ambigu ;
+- nommer d’abord la finalité réelle, puis le mécanisme technique lorsque celui-ci apporte une information nécessaire ;
+- conserver une seule langue de nommage cohérente dans le projet ;
+- remplacer les acronymes et les sigles par leur signification complète dans les noms appartenant au projet ;
+- qualifier tout terme générique par son domaine et son action réelle ;
+- employer un terme technique uniquement lorsqu’il est indispensable et qu’aucun mot courant aussi exact n’existe ;
+- entourer tout terme technique imposé par un nom métier suffisamment clair pour que la responsabilité reste identifiable.
 
 L’agent NE DOIT PAS :
 
-- inventer des abréviations ;
-- employer un acronyme non expliqué uniquement pour raccourcir un nom ;
-- utiliser seul un terme fourre-tout comme `data`, `thing`, `stuff`, `misc`, `other`, `general`, `manager`, `helper` ou `utils` lorsqu’il ne révèle pas une responsabilité précise ;
+- utiliser une lettre isolée comme préfixe de catégorie ;
+- inventer ou conserver une abréviation uniquement pour raccourcir un nom ;
+- supposer qu’un acronyme est compréhensible parce qu’il est courant dans une équipe technique ;
+- utiliser seul un terme fourre-tout comme `data`, `thing`, `stuff`, `misc`, `other`, `general`, `manager`, `helper` ou `utils` ;
 - choisir un terme très spécialisé lorsqu’un terme courant et exact suffit ;
-- produire des noms excessivement longs en répétant des informations déjà garanties par le dossier parent ;
-- mélanger plusieurs langues dans une même convention de nommage.
+- mélanger plusieurs langues dans une même convention ;
+- produire un nom artificiellement long en répétant des informations déjà garanties par le dossier parent.
 
-Exemples :
+Exemples généraux :
 
 | À éviter | Préférer | Raison |
 |---|---|---|
 | `data.ts` | `invoice-payment-summary.types.ts` | Le contenu et le domaine sont identifiables. |
 | `Manager.ts` | `OrganizationAccessPolicyService.ts` | La responsabilité n’est plus implicite. |
-| `utils.ts` | `invoice-date.utils.ts` | Le périmètre de l’utilitaire est explicite. |
+| `utils.ts` | `format-invoice-due-date.ts` | L’action réelle remplace le terme fourre-tout. |
 | `Dashboard.tsx` | `BillingOverviewPage.tsx` | La page et son domaine sont reconnaissables. |
 | `useData.ts` | `useOrganizationInvoices.ts` | La donnée réellement chargée est visible. |
-| `Config` | `TenantBrandingConfiguration` | La configuration concernée est précisée. |
+| `Config` | `TenantBrandingConfiguration` | Le mot et le périmètre sont écrits complètement. |
+| `userId` | `userIdentifier` | `Identifier` ne demande pas de connaître l’abréviation `Id`. |
+| `invoicePageProps` | `invoicePageProperties` | `Properties` remplace l’abréviation `Props`. |
 
-### Préfixes obligatoires pour les types TypeScript
+### Préfixes complets obligatoires pour les types TypeScript
 
-Toute déclaration de type nommée appartenant au projet DOIT utiliser un préfixe stable indiquant sa catégorie :
+Toute déclaration de type nommée appartenant au projet DOIT commencer par le mot complet qui indique sa catégorie.
 
-| Catégorie | Préfixe | Exemple |
+| Catégorie | Préfixe obligatoire | Exemple |
 |---|---|---|
-| Interface | `I` | `IOrganizationUser`, `IInvoicePageProps` |
-| Alias, union, intersection ou type dérivé | `T` | `TInvoiceStatus`, `TCreateInvoiceRequest` |
-| Enumération TypeScript | `E` | `EPaymentMethod`, `EInvoiceLifecycleStatus` |
-| Paramètre générique | `T` suivi d’un rôle descriptif | `TInvoiceItem`, `TApiResponse` |
+| Interface | `Interface` | `InterfaceOrganizationUser`, `InterfaceInvoicePageProperties` |
+| Alias, union, intersection ou type dérivé | `Type` | `TypeInvoiceStatus`, `TypeCreateInvoiceRequest` |
+| Énumération TypeScript | `Enumeration` | `EnumerationPaymentMethod`, `EnumerationInvoiceLifecycleStatus` |
+| Paramètre générique | `Type` suivi de son rôle complet | `TypeInvoiceItem`, `TypeServerResponse` |
 
-Le préfixe ne remplace jamais un nom sémantique complet. `TData`, `IThing`, `EType` et `TItem` sont interdits lorsqu’un nom plus précis peut être donné.
+Les préfixes à une seule lettre `I`, `T` et `E` sont interdits. Ils obligent le lecteur à connaître une convention implicite et contredisent l’objectif de compréhension immédiate.
 
-Les suffixes décrivant le rôle restent requis lorsqu’ils sont utiles : `Props`, `State`, `Request`, `Response`, `Payload`, `FormValues`, `Configuration` ou `Options`.
+Le préfixe complet ne remplace jamais le nom métier. `TypeData`, `InterfaceThing`, `EnumerationType` et `TypeItem` restent interdits lorsqu’une responsabilité plus précise peut être nommée.
+
+Les suffixes décrivant un rôle doivent eux aussi être écrits complètement. Utiliser notamment :
+
+- `Properties` et non `Props` ;
+- `Identifier` et non `Id` ;
+- `Configuration` et non `Config` ou `Cfg` ;
+- `Request` et non `Req` ;
+- `Response` et non `Res` ;
+- `Context` et non `Ctx` ;
+- `Service` et non `Svc`.
 
 Exemples :
 
 ```ts
-interface IOrganizationUser {
-  userId: string;
+interface InterfaceOrganizationUser {
+  userIdentifier: string;
   displayName: string;
 }
 
-type TInvoiceStatus = 'draft' | 'issued' | 'paid';
+type TypeInvoiceStatus = 'draft' | 'issued' | 'paid';
 
-enum EPaymentMethod {
+enum EnumerationPaymentMethod {
   BankTransfer = 'bank-transfer',
   Card = 'card',
 }
 
-interface IInvoicePageProps {
-  organizationId: string;
+interface InterfaceInvoicePageProperties {
+  organizationIdentifier: string;
 }
 
-type TCreateInvoiceRequest = {
-  organizationId: string;
-  customerId: string;
+type TypeCreateInvoiceRequest = {
+  organizationIdentifier: string;
+  customerIdentifier: string;
 };
 
-function groupInvoiceItems<TInvoiceItem>(
-  items: TInvoiceItem[],
-): TInvoiceItem[][] {
+function groupInvoiceItems<TypeInvoiceItem>(
+  items: TypeInvoiceItem[],
+): TypeInvoiceItem[][] {
   return [items];
 }
 ```
 
-Exceptions contrôlées :
+### Noms des dossiers, fichiers et éléments fonctionnels
 
-- ne pas renommer les types provenant d’une dépendance externe ;
-- ne pas modifier directement les types générés par OpenAPI, GraphQL ou un autre générateur ;
-- conserver un nom imposé par un contrat public existant lorsque le renommer provoquerait une rupture ;
-- adapter si nécessaire un type externe vers un type interne conforme à la frontière du projet.
+Les noms structurels doivent également annoncer clairement leur catégorie et leur finalité lorsque le chemin parent ne suffit pas.
 
-L’agent ne doit jamais lancer un renommage massif hors périmètre pour imposer cette convention. Dans un fichier déjà modifié pour la tâche en cours, il aligne uniquement les types touchés lorsque cela reste sûr, local et compatible avec les contrats existants.
+Exemples :
+
+- `module-billing` identifie explicitement un module de facturation ;
+- `BillingOverviewPage.tsx` identifie une page de synthèse de facturation ;
+- `InvoicePaymentForm.tsx` identifie un formulaire de paiement de facture ;
+- `invoice-payment.validation-schema.ts` identifie les règles de validation du paiement ;
+- `useOrganizationInvoices.ts` identifie l’accès aux factures d’une organisation.
+
+Un préfixe ou un suffixe ne doit pas être ajouté mécaniquement si le dossier parent fournit déjà la même information sans ambiguïté. La clarté est obligatoire ; la répétition inutile ne l’est pas.
+
+### Exceptions contrôlées
+
+Les abréviations ou noms imposés sont tolérés uniquement lorsqu’ils proviennent d’une contrainte que le projet ne contrôle pas :
+
+- mot-clé obligatoire du langage ou du framework ;
+- type provenant d’une dépendance externe ;
+- type généré par OpenAPI, GraphQL ou un autre générateur ;
+- nom défini par un contrat public existant ;
+- protocole, format ou nom officiel qui ne peut pas être renommé localement.
+
+L’agent ne doit pas propager automatiquement cette exception aux noms internes. Il adapte si nécessaire un élément externe vers un nom interne explicite à la frontière du projet.
+
+L’agent ne doit jamais lancer un renommage massif hors périmètre pour imposer cette convention. Dans un fichier déjà modifié pour la tâche en cours, il aligne uniquement les noms touchés lorsque cela reste sûr, local et compatible avec les contrats existants.
 
 ### Contrôle avant livraison
 
-Avant de terminer une tâche, l’agent vérifie chaque nom ajouté ou modifié avec les questions suivantes :
+Avant de terminer une tâche, l’agent vérifie chaque nom ajouté ou modifié :
 
-1. Une personne peut-elle identifier la finalité de l’élément sans ouvrir son implémentation ?
-2. Le domaine métier est-il visible ou fourni sans ambiguïté par le chemin parent ?
-3. Le nom évite-t-il les abréviations, acronymes et termes fourre-tout non expliqués ?
-4. Un type appartenant au projet porte-t-il le préfixe correspondant à sa catégorie ?
-5. Le nom reste-t-il assez concis pour être lu et recherché facilement ?
-6. La modification reste-t-elle strictement dans le périmètre demandé ?
+1. Une personne non développeuse peut-elle identifier sa finalité générale sans ouvrir son implémentation ?
+2. La catégorie de l’élément est-elle explicite lorsqu’elle ne peut pas être déduite du chemin ?
+3. Le domaine métier est-il visible ou fourni sans ambiguïté par le dossier parent ?
+4. Tous les mots contrôlés par le projet sont-ils écrits complètement ?
+5. Les lettres isolées, abréviations, acronymes et termes fourre-tout ont-ils été supprimés ?
+6. Chaque type appartenant au projet porte-t-il le préfixe complet correspondant à sa catégorie ?
+7. Le nom reste-t-il lisible, recherchable et dépourvu de répétitions inutiles ?
+8. La modification reste-t-elle strictement dans le périmètre demandé ?
 
 En cas de conflit avec une convention existante explicitement imposée par le projet, l’agent ne décide pas silencieusement : il signale le conflit et applique la convention validée pour le périmètre concerné.
 
@@ -1446,7 +1486,7 @@ En cas de conflit avec une convention existante explicitement imposée par le pr
 - composants : PascalCase ;
 - variables et fonctions : camelCase ;
 - constantes : UPPER_SNAKE_CASE ;
-- types : PascalCase ;
+- types : PascalCase avec le préfixe complet `Interface`, `Type` ou `Enumeration` ;
 - permissions : `resource:action`;
 - événements : convention centralisée.
 
@@ -1722,7 +1762,7 @@ Il devrait pouvoir supporter :
 Exemple de contrat :
 
 ```ts
-export interface BrandAssets {
+export interface InterfaceBrandAssets {
   logoLightUrl: string;
   logoDarkUrl: string;
   logoCompactUrl?: string;
@@ -1730,18 +1770,18 @@ export interface BrandAssets {
   socialImageUrl?: string;
 }
 
-export interface BrandTheme {
+export interface InterfaceBrandTheme {
   light: Record<string, string>;
   dark: Record<string, string>;
   highContrast?: Record<string, string>;
 }
 
-export interface TenantBranding {
+export interface InterfaceTenantBranding {
   tenantId: string;
   applicationName: string;
   shortName?: string;
-  assets: BrandAssets;
-  theme: BrandTheme;
+  assets: InterfaceBrandAssets;
+  theme: InterfaceBrandTheme;
   defaultThemeMode: 'light' | 'dark' | 'system';
   supportEmail?: string;
   legalNoticeUrl?: string;
@@ -2481,7 +2521,7 @@ Cela ne signifie pas entourer chaque ligne de `try/catch`.
 ## 24.2 Taxonomie
 
 ```ts
-export type AppErrorCategory =
+export type TypeApplicationErrorCategory =
   | 'network'
   | 'timeout'
   | 'cancelled'
@@ -2498,9 +2538,9 @@ export type AppErrorCategory =
   | 'tenant'
   | 'unknown';
 
-export interface AppError {
+export interface InterfaceApplicationError {
   code: string;
-  category: AppErrorCategory;
+  category: TypeApplicationErrorCategory;
   userMessage: string;
   technicalMessage?: string;
   fieldErrors?: Record<string, string>;
@@ -2516,7 +2556,7 @@ export interface AppError {
 Créer :
 
 ```ts
-export function normalizeError(error: unknown): AppError {
+export function normalizeError(error: unknown): InterfaceApplicationError {
   // classification, extraction sûre et fallback
 }
 ```
@@ -2750,7 +2790,7 @@ export const INVOICE_PERMISSIONS = {
   DELETE: 'billing:invoice:delete',
 } as const;
 
-export type InvoicePermission =
+export type TypeInvoicePermission =
   (typeof INVOICE_PERMISSIONS)[keyof typeof INVOICE_PERMISSIONS];
 ```
 
@@ -2810,7 +2850,7 @@ Une politique doit pouvoir déclarer :
 Exemple :
 
 ```ts
-export interface AuthorizationPolicy {
+export interface InterfaceAuthorizationPolicy {
   id: string;
   requiredPermissions?: readonly string[];
   permissionMode?: 'ALL' | 'ANY';
