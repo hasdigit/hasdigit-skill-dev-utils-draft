@@ -13,6 +13,11 @@ Chaque skill conserve ses propres références, templates, scénarios et histori
 
 Lire [l’installation](docs/installation.md), puis [l’utilisation du dépôt](docs/repository-usage.md). Pour contribuer, appliquer [les règles de contribution](docs/contributing.md).
 
+Chaque nouvelle session doit commencer par le prompt fourni avec le skill installé :
+
+- [Démarrage du skill d’orchestration](skills/orchestration/ai-orchestrator-methodology/installation/installation.md)
+- [Démarrage du skill frontend React et Vite](skills/frontend/react/react-vite-enterprise-saas/installation/installation.md)
+
 ## Validation
 
 Exécuter :

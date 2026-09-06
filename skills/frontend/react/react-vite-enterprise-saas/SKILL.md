@@ -69,6 +69,7 @@ Toute dérogation doit être :
 
 Lire ce fichier complètement avant de modifier une application. Charger ensuite les références directement concernées :
 
+- [Installation et prompt obligatoire de démarrage](installation/installation.md) à utiliser lors de l’installation du skill et au début de chaque nouvelle session.
 - [Architecture](references/architecture.md) pour les modules, routes, composants, thèmes, données, configuration, déploiement, performance et observabilité.
 - [Nommage et types](references/naming-and-types.md) avant de créer ou renommer un dossier, fichier, symbole ou type TypeScript.
 - [Permissions](references/permissions.md) pour les modèles de protection, catalogues, politiques, routes, composants et actions.

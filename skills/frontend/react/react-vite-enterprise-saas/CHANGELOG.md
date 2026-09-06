@@ -5,6 +5,7 @@
 - Transformation du document monolithique en skill autonome et références thématiques.
 - Conservation vérifiable de tout le contenu du document source.
 - Colocalisation des templates, scénarios et métadonnées avec le skill frontend.
+- Ajout d’un guide d’installation autonome et d’un prompt obligatoire pour contrôler ou actualiser les garde-fous au démarrage de chaque session.
 
 <!-- preserved-source-part-start: frontend-section-47 -->
 # 47. Historique de version

@@ -57,3 +57,11 @@ Pour une action critique :
 ---
 
 <!-- preserved-source-part-end: frontend-section-36 -->
+
+## Scénario supplémentaire : initialisation des garde-fous au démarrage d’une session
+
+- **Situation initiale** : une nouvelle session reçoit le chemin du dossier maître du skill et ouvre une application qui possède déjà une partie de ses contrôles de qualité.
+- **Action** : la session applique le [prompt obligatoire de démarrage](../installation/installation.md).
+- **Résultat attendu** : le dossier maître est inventorié, les exigences applicables sont comparées aux contrôles du projet et les garde-fous manquants ou devenus obsolètes sont ajoutés ou actualisés sans destruction des conventions valides.
+- **Comportement interdit** : commencer le développement sans rapport de préparation, considérer une règle écrite comme un contrôle automatique, installer une dépendance injustifiée ou ignorer une évolution du skill.
+- **Preuve attendue** : inventaire de la source active, correspondance entre exigences et garde-fous, résultats des contrôles TypeScript, architecture, permissions, sécurité, accessibilité, tests et livraison qui sont pertinents pour le projet.

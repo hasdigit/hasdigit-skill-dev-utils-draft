@@ -95,3 +95,11 @@ Chaque scénario est réussi seulement si THEN et EVIDENCE sont satisfaits et si
 - **FORBIDDEN** : référence isolée telle que `voir C-09`, préfixe réduit, abréviation interne ou terme technique non expliqué.
 - **EVIDENCE** : lecture locale compréhensible, noms complets et contrat de sous-agent conforme à la section 1.6 (langage accessible, noms complets et références auto-explicatives).
 <!-- preserved-source-part-end: orchestrator-section-12 -->
+
+## Scénario supplémentaire : initialisation des garde-fous au démarrage d’une session
+
+- **Situation initiale** : une nouvelle session reçoit le chemin du dossier maître du skill et ouvre un projet qui contient déjà certains garde-fous.
+- **Action** : la session applique le [prompt obligatoire de démarrage](../installation/installation.md).
+- **Résultat attendu** : le dossier maître est inventorié, les exigences applicables sont comparées aux contrôles existants, les différences liées aux évolutions du skill sont identifiées et seuls les garde-fous nécessaires sont ajoutés ou actualisés.
+- **Comportement interdit** : commencer la mission sans rapport de préparation, supposer qu’un garde-fou existe sans preuve, recréer aveuglément les contrôles, supprimer une convention existante ou remplacer le dossier maître par l’espace partagé du projet.
+- **Preuve attendue** : inventaire de la source active, correspondance entre exigences et garde-fous, résultat des validations et contexte de reprise compréhensible par la session suivante.

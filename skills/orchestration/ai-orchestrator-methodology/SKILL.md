@@ -12,6 +12,7 @@ description: Orchestrer des tâches complexes avec cadrage, délégation, état 
 
 Lire ce fichier complètement avant d’agir. Charger ensuite uniquement les ressources nécessaires à la tâche :
 
+- [Installation et prompt obligatoire de démarrage](installation/installation.md) à utiliser lors de l’installation du skill et au début de chaque nouvelle session.
 - [État, protection des données et récupération](references/state-and-recovery.md) pour la persistance, les points de contrôle, les états, la reprise et la protection des données.
 - [Délégation et garde-fous](references/delegation.md) avant toute délégation, intégration de proposition ou gestion d’un budget de mission.
 - [Vérification et conformité](references/verification.md) pour qualifier les données, contrôler une étape ou autoriser une terminaison.

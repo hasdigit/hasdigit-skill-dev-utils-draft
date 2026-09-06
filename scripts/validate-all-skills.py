@@ -115,6 +115,19 @@ def main() -> int:
     if set(skill_paths) != expected_skill_paths:
         errors.append("les deux unités de skill attendues ne sont pas les seules détectées")
 
+    expected_installation_paths = {
+        REPOSITORY_ROOT
+        / "skills/orchestration/ai-orchestrator-methodology/installation/installation.md",
+        REPOSITORY_ROOT
+        / "skills/frontend/react/react-vite-enterprise-saas/installation/installation.md",
+    }
+    for installation_path in expected_installation_paths:
+        if not installation_path.is_file():
+            errors.append(
+                "guide d’installation propre au skill absent: "
+                f"{installation_path.relative_to(REPOSITORY_ROOT)}"
+            )
+
     for skill_path in skill_paths:
         validate_skill_frontmatter(skill_path, errors)
 
