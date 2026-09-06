@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "source_file": "#00-SKILL_METHODOLOGIE_TRAVAIL_AGENT_IA.md",
+  "source_git_blob_hash": "af2796d9b35cf2399b9225609607554a9aa53e66",
+  "destination_root": "skills/orchestration/ai-orchestrator-methodology",
+  "preservation_rule": "The source is reconstructed exactly by concatenating the optional original frontmatter and all preserved parts in listed order.",
+  "preserved_parts": [
+    {
+      "part_identifier": "orchestrator-preamble",
+      "human_title": "Preamble",
+      "destination_path": "SKILL.md"
+    },
+    {
+      "part_identifier": "orchestrator-section-1",
+      "human_title": "Cadre normatif, autorité et limites",
+      "destination_path": "SKILL.md"
+    },
+    {
+      "part_identifier": "orchestrator-section-2",
+      "human_title": "Profils, prévol, capacités et replis",
+      "destination_path": "SKILL.md"
+    },
+    {
+      "part_identifier": "orchestrator-section-3",
+      "human_title": "Protection de toutes les données",
+      "destination_path": "references/state-and-recovery.md"
+    },
+    {
+      "part_identifier": "orchestrator-section-4",
+      "human_title": "État persistant et points de contrôle transactionnels",
+      "destination_path": "references/state-and-recovery.md"
+    },
+    {
+      "part_identifier": "orchestrator-section-5",
+      "human_title": "Cadrage, états, plan et lignée de mission",
+      "destination_path": "references/state-and-recovery.md"
+    },
+    {
+      "part_identifier": "orchestrator-section-6",
+      "human_title": "Délégation, contrat, écriture et intégration",
+      "destination_path": "references/delegation.md"
+    },
+    {
+      "part_identifier": "orchestrator-section-7",
+      "human_title": "Données vérifiées, preuve par étape et fraîcheur",
+      "destination_path": "references/verification.md"
+    },
+    {
+      "part_identifier": "orchestrator-section-8",
+      "human_title": "Intégrité du contexte, récupération et reprise à froid",
+      "destination_path": "references/state-and-recovery.md"
+    },
+    {
+      "part_identifier": "orchestrator-section-9",
+      "human_title": "Économie de jetons et garde-fous impératifs",
+      "destination_path": "references/delegation.md"
+    },
+    {
+      "part_identifier": "orchestrator-section-10",
+      "human_title": "Terminaison, blocage, échec et communication",
+      "destination_path": "SKILL.md"
+    },
+    {
+      "part_identifier": "orchestrator-section-11",
+      "human_title": "Matrice de conformité",
+      "destination_path": "references/verification.md"
+    },
+    {
+      "part_identifier": "orchestrator-section-12",
+      "human_title": "Scénarios discriminants",
+      "destination_path": "tests/scenarios.md"
+    }
+  ]
+}

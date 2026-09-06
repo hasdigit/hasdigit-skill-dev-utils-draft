@@ -1,0 +1,518 @@
+{
+  "schema_version": 1,
+  "source_file": "SKILL_FRONTEND_REACT_VITE_ENTERPRISE_SAAS_V1.1.md",
+  "source_git_blob_hash": "2a937051f3ce659d3a2d93601e0505e2de6fbe61",
+  "destination_root": "skills/frontend/react/react-vite-enterprise-saas",
+  "preservation_rule": "The source is reconstructed exactly by concatenating the optional original frontmatter and all preserved parts in listed order.",
+  "preserved_parts": [
+    {
+      "part_identifier": "frontend-preamble",
+      "human_title": "Preamble",
+      "destination_path": "SKILL.md"
+    },
+    {
+      "part_identifier": "frontend-section-1",
+      "human_title": "Mission de l’agent",
+      "destination_path": "SKILL.md"
+    },
+    {
+      "part_identifier": "frontend-section-2",
+      "human_title": "Philosophie générale",
+      "destination_path": "SKILL.md"
+    },
+    {
+      "part_identifier": "frontend-section-3",
+      "human_title": "Ordre de priorité",
+      "destination_path": "SKILL.md"
+    },
+    {
+      "part_identifier": "frontend-section-4",
+      "human_title": "Règles absolues",
+      "destination_path": "SKILL.md"
+    },
+    {
+      "part_identifier": "frontend-section-5",
+      "human_title": "Processus obligatoire avant tout développement",
+      "destination_path": "SKILL.md"
+    },
+    {
+      "part_identifier": "frontend-section-6",
+      "human_title": "Choix obligatoire du modèle de protection",
+      "destination_path": "references/permissions.md"
+    },
+    {
+      "part_identifier": "frontend-section-7",
+      "human_title": "Stack de référence",
+      "destination_path": "references/architecture.md"
+    },
+    {
+      "part_identifier": "frontend-section-8-heading",
+      "human_title": "Architecture modulaire orientée domaines, features et permissions",
+      "destination_path": "references/architecture.md"
+    },
+    {
+      "part_identifier": "frontend-section-8-subsection-8-1",
+      "human_title": "Principe architectural obligatoire",
+      "destination_path": "references/architecture.md"
+    },
+    {
+      "part_identifier": "frontend-section-8-subsection-8-2",
+      "human_title": "Définition d’un module",
+      "destination_path": "references/architecture.md"
+    },
+    {
+      "part_identifier": "frontend-section-8-subsection-8-3",
+      "human_title": "Convention de nommage",
+      "destination_path": "references/architecture.md"
+    },
+    {
+      "part_identifier": "frontend-section-8-subsection-8-4",
+      "human_title": "Structure globale recommandée",
+      "destination_path": "references/architecture.md"
+    },
+    {
+      "part_identifier": "frontend-section-8-subsection-8-5",
+      "human_title": "Cas d’une application à module unique",
+      "destination_path": "references/architecture.md"
+    },
+    {
+      "part_identifier": "frontend-section-8-subsection-8-6",
+      "human_title": "Structure complète d’un module",
+      "destination_path": "references/architecture.md"
+    },
+    {
+      "part_identifier": "frontend-section-8-subsection-8-7",
+      "human_title": "Structure complète d’une feature",
+      "destination_path": "references/architecture.md"
+    },
+    {
+      "part_identifier": "frontend-section-8-subsection-8-8",
+      "human_title": "Les niveaux de partage",
+      "destination_path": "references/architecture.md"
+    },
+    {
+      "part_identifier": "frontend-section-8-subsection-8-9",
+      "human_title": "Règle de promotion",
+      "destination_path": "references/architecture.md"
+    },
+    {
+      "part_identifier": "frontend-section-8-subsection-8-10",
+      "human_title": "Matrice obligatoire des dépendances",
+      "destination_path": "references/architecture.md"
+    },
+    {
+      "part_identifier": "frontend-section-8-subsection-8-11",
+      "human_title": "Communications entre features du même module",
+      "destination_path": "references/architecture.md"
+    },
+    {
+      "part_identifier": "frontend-section-8-subsection-8-12",
+      "human_title": "Communications entre modules",
+      "destination_path": "references/architecture.md"
+    },
+    {
+      "part_identifier": "frontend-section-8-subsection-8-13",
+      "human_title": "API publique d’un module",
+      "destination_path": "references/architecture.md"
+    },
+    {
+      "part_identifier": "frontend-section-8-subsection-8-14",
+      "human_title": "Manifeste de module",
+      "destination_path": "references/architecture.md"
+    },
+    {
+      "part_identifier": "frontend-section-8-subsection-8-15",
+      "human_title": "Registre des modules",
+      "destination_path": "references/architecture.md"
+    },
+    {
+      "part_identifier": "frontend-section-8-subsection-8-16",
+      "human_title": "Activation et désactivation",
+      "destination_path": "references/architecture.md"
+    },
+    {
+      "part_identifier": "frontend-section-8-subsection-8-17",
+      "human_title": "Lazy loading et code splitting par module",
+      "destination_path": "references/architecture.md"
+    },
+    {
+      "part_identifier": "frontend-section-8-subsection-8-18",
+      "human_title": "Providers et état de module",
+      "destination_path": "references/architecture.md"
+    },
+    {
+      "part_identifier": "frontend-section-8-subsection-8-19",
+      "human_title": "Routes et navigation",
+      "destination_path": "references/architecture.md"
+    },
+    {
+      "part_identifier": "frontend-section-8-subsection-8-20",
+      "human_title": "Propriété et hiérarchie des permissions",
+      "destination_path": "references/permissions.md"
+    },
+    {
+      "part_identifier": "frontend-section-8-subsection-8-21",
+      "human_title": "Une permission métier, plusieurs surfaces d’application",
+      "destination_path": "references/permissions.md"
+    },
+    {
+      "part_identifier": "frontend-section-8-subsection-8-22",
+      "human_title": "Manifeste de permissions d’une feature",
+      "destination_path": "references/permissions.md"
+    },
+    {
+      "part_identifier": "frontend-section-8-subsection-8-23",
+      "human_title": "Documentation obligatoire d’un module",
+      "destination_path": "references/permissions.md"
+    },
+    {
+      "part_identifier": "frontend-section-8-subsection-8-24",
+      "human_title": "Tests des frontières",
+      "destination_path": "references/architecture.md"
+    },
+    {
+      "part_identifier": "frontend-section-8-subsection-8-25",
+      "human_title": "Dépendances circulaires",
+      "destination_path": "references/architecture.md"
+    },
+    {
+      "part_identifier": "frontend-section-8-subsection-8-26",
+      "human_title": "Micro-frontends",
+      "destination_path": "references/architecture.md"
+    },
+    {
+      "part_identifier": "frontend-section-8-subsection-8-27",
+      "human_title": "Critères de création d’un nouveau module",
+      "destination_path": "references/architecture.md"
+    },
+    {
+      "part_identifier": "frontend-section-9",
+      "human_title": "Routage scalable",
+      "destination_path": "references/architecture.md"
+    },
+    {
+      "part_identifier": "frontend-section-10",
+      "human_title": "TypeScript strict",
+      "destination_path": "references/naming-and-types.md"
+    },
+    {
+      "part_identifier": "frontend-section-11",
+      "human_title": "Conventions de nommage",
+      "destination_path": "references/naming-and-types.md"
+    },
+    {
+      "part_identifier": "frontend-section-12",
+      "human_title": "Composants épurés",
+      "destination_path": "references/architecture.md"
+    },
+    {
+      "part_identifier": "frontend-section-13",
+      "human_title": "Design system et harmonisation",
+      "destination_path": "references/architecture.md"
+    },
+    {
+      "part_identifier": "frontend-section-14",
+      "human_title": "Architecture SaaS, thèmes et white-label",
+      "destination_path": "references/architecture.md"
+    },
+    {
+      "part_identifier": "frontend-section-15",
+      "human_title": "Branding dynamique et SEO",
+      "destination_path": "references/architecture.md"
+    },
+    {
+      "part_identifier": "frontend-section-16",
+      "human_title": "Responsive et adaptatif",
+      "destination_path": "references/accessibility.md"
+    },
+    {
+      "part_identifier": "frontend-section-17",
+      "human_title": "Zoom, viewport et reflow",
+      "destination_path": "references/accessibility.md"
+    },
+    {
+      "part_identifier": "frontend-section-18",
+      "human_title": "Curseur et sémantique interactive",
+      "destination_path": "references/accessibility.md"
+    },
+    {
+      "part_identifier": "frontend-section-19",
+      "human_title": "Listes, collections, pagination et scroll",
+      "destination_path": "references/architecture.md"
+    },
+    {
+      "part_identifier": "frontend-section-20",
+      "human_title": "Loaders et progression",
+      "destination_path": "references/architecture.md"
+    },
+    {
+      "part_identifier": "frontend-section-21",
+      "human_title": "Prévention des boucles de requêtes",
+      "destination_path": "references/architecture.md"
+    },
+    {
+      "part_identifier": "frontend-section-22",
+      "human_title": "Gestion d’état",
+      "destination_path": "references/architecture.md"
+    },
+    {
+      "part_identifier": "frontend-section-23",
+      "human_title": "Couche API",
+      "destination_path": "references/architecture.md"
+    },
+    {
+      "part_identifier": "frontend-section-24",
+      "human_title": "Gestion exhaustive des erreurs",
+      "destination_path": "references/architecture.md"
+    },
+    {
+      "part_identifier": "frontend-section-25",
+      "human_title": "Retour utilisateur après toute action",
+      "destination_path": "references/architecture.md"
+    },
+    {
+      "part_identifier": "frontend-section-26",
+      "human_title": "Formulaires",
+      "destination_path": "references/architecture.md"
+    },
+    {
+      "part_identifier": "frontend-section-27-heading",
+      "human_title": "Sécurité frontend et gouvernance des permissions",
+      "destination_path": "references/security.md"
+    },
+    {
+      "part_identifier": "frontend-section-27-subsection-27-1",
+      "human_title": "Authentification",
+      "destination_path": "references/security.md"
+    },
+    {
+      "part_identifier": "frontend-section-27-subsection-27-2",
+      "human_title": "Principe de propriété",
+      "destination_path": "references/permissions.md"
+    },
+    {
+      "part_identifier": "frontend-section-27-subsection-27-3",
+      "human_title": "Catalogue TypeScript par défaut",
+      "destination_path": "references/permissions.md"
+    },
+    {
+      "part_identifier": "frontend-section-27-subsection-27-4",
+      "human_title": "Catalogue YAML ou JSON optionnel",
+      "destination_path": "references/permissions.md"
+    },
+    {
+      "part_identifier": "frontend-section-27-subsection-27-5",
+      "human_title": "Interdiction des permissions dans `.env`",
+      "destination_path": "references/permissions.md"
+    },
+    {
+      "part_identifier": "frontend-section-27-subsection-27-6",
+      "human_title": "Modèle de politique",
+      "destination_path": "references/permissions.md"
+    },
+    {
+      "part_identifier": "frontend-section-27-subsection-27-7",
+      "human_title": "Politiques de route",
+      "destination_path": "references/permissions.md"
+    },
+    {
+      "part_identifier": "frontend-section-27-subsection-27-8",
+      "human_title": "Politiques de composant",
+      "destination_path": "references/permissions.md"
+    },
+    {
+      "part_identifier": "frontend-section-27-subsection-27-9",
+      "human_title": "Politiques d’action API",
+      "destination_path": "references/permissions.md"
+    },
+    {
+      "part_identifier": "frontend-section-27-subsection-27-10",
+      "human_title": "Protection frontend et backend",
+      "destination_path": "references/permissions.md"
+    },
+    {
+      "part_identifier": "frontend-section-27-subsection-27-11",
+      "human_title": "Guards obligatoires",
+      "destination_path": "references/permissions.md"
+    },
+    {
+      "part_identifier": "frontend-section-27-subsection-27-12",
+      "human_title": "Cohérence des trois surfaces",
+      "destination_path": "references/permissions.md"
+    },
+    {
+      "part_identifier": "frontend-section-27-subsection-27-13",
+      "human_title": "Refus et retour utilisateur",
+      "destination_path": "references/permissions.md"
+    },
+    {
+      "part_identifier": "frontend-section-27-subsection-27-14",
+      "human_title": "Cache des permissions",
+      "destination_path": "references/permissions.md"
+    },
+    {
+      "part_identifier": "frontend-section-27-subsection-27-15",
+      "human_title": "XSS",
+      "destination_path": "references/security.md"
+    },
+    {
+      "part_identifier": "frontend-section-27-subsection-27-16",
+      "human_title": "Secrets",
+      "destination_path": "references/security.md"
+    },
+    {
+      "part_identifier": "frontend-section-27-subsection-27-17",
+      "human_title": "Dépendances",
+      "destination_path": "references/security.md"
+    },
+    {
+      "part_identifier": "frontend-section-28",
+      "human_title": "Portabilité et configuration",
+      "destination_path": "references/architecture.md"
+    },
+    {
+      "part_identifier": "frontend-section-29",
+      "human_title": "Déploiement",
+      "destination_path": "references/architecture.md"
+    },
+    {
+      "part_identifier": "frontend-section-30",
+      "human_title": "SEO complet",
+      "destination_path": "references/architecture.md"
+    },
+    {
+      "part_identifier": "frontend-section-31",
+      "human_title": "Accessibilité",
+      "destination_path": "references/accessibility.md"
+    },
+    {
+      "part_identifier": "frontend-section-32",
+      "human_title": "Internationalisation",
+      "destination_path": "references/architecture.md"
+    },
+    {
+      "part_identifier": "frontend-section-33",
+      "human_title": "Aides et onboarding",
+      "destination_path": "references/architecture.md"
+    },
+    {
+      "part_identifier": "frontend-section-34",
+      "human_title": "Performance et scalabilité",
+      "destination_path": "references/architecture.md"
+    },
+    {
+      "part_identifier": "frontend-section-35",
+      "human_title": "Observabilité",
+      "destination_path": "references/architecture.md"
+    },
+    {
+      "part_identifier": "frontend-section-36",
+      "human_title": "Tests",
+      "destination_path": "tests/scenarios.md"
+    },
+    {
+      "part_identifier": "frontend-section-37",
+      "human_title": "CI/CD",
+      "destination_path": "references/testing-and-delivery.md"
+    },
+    {
+      "part_identifier": "frontend-section-38",
+      "human_title": "Gestion des dépendances",
+      "destination_path": "references/architecture.md"
+    },
+    {
+      "part_identifier": "frontend-section-39-heading",
+      "human_title": "Workflow de création d’un module ou d’une feature",
+      "destination_path": "references/testing-and-delivery.md"
+    },
+    {
+      "part_identifier": "frontend-section-39-subsection-39-1",
+      "human_title": "Déterminer le bon niveau",
+      "destination_path": "references/testing-and-delivery.md"
+    },
+    {
+      "part_identifier": "frontend-section-39-subsection-39-2",
+      "human_title": "Analyse",
+      "destination_path": "references/testing-and-delivery.md"
+    },
+    {
+      "part_identifier": "frontend-section-39-subsection-39-3",
+      "human_title": "Création d’un nouveau module",
+      "destination_path": "assets/templates/frontend-module/template.md"
+    },
+    {
+      "part_identifier": "frontend-section-39-subsection-39-4",
+      "human_title": "Création d’une feature",
+      "destination_path": "assets/templates/frontend-feature/template.md"
+    },
+    {
+      "part_identifier": "frontend-section-39-subsection-39-5",
+      "human_title": "Promotion vers un niveau partagé",
+      "destination_path": "references/testing-and-delivery.md"
+    },
+    {
+      "part_identifier": "frontend-section-39-subsection-39-6",
+      "human_title": "Conception",
+      "destination_path": "references/testing-and-delivery.md"
+    },
+    {
+      "part_identifier": "frontend-section-39-subsection-39-7",
+      "human_title": "Implémentation",
+      "destination_path": "references/testing-and-delivery.md"
+    },
+    {
+      "part_identifier": "frontend-section-39-subsection-39-8",
+      "human_title": "Validation",
+      "destination_path": "references/testing-and-delivery.md"
+    },
+    {
+      "part_identifier": "frontend-section-40",
+      "human_title": "Checklist module et feature",
+      "destination_path": "references/testing-and-delivery.md"
+    },
+    {
+      "part_identifier": "frontend-section-41",
+      "human_title": "Definition of Done",
+      "destination_path": "references/testing-and-delivery.md"
+    },
+    {
+      "part_identifier": "frontend-section-42",
+      "human_title": "Anti-patterns à détecter activement",
+      "destination_path": "references/testing-and-delivery.md"
+    },
+    {
+      "part_identifier": "frontend-section-43",
+      "human_title": "Grille de sévérité pour audit",
+      "destination_path": "references/testing-and-delivery.md"
+    },
+    {
+      "part_identifier": "frontend-section-44",
+      "human_title": "Format du compte rendu de l’agent",
+      "destination_path": "assets/templates/audit-report.md"
+    },
+    {
+      "part_identifier": "frontend-section-45",
+      "human_title": "Commande comportementale finale",
+      "destination_path": "SKILL.md"
+    },
+    {
+      "part_identifier": "frontend-section-46",
+      "human_title": "Référence de démarrage pour une nouvelle application",
+      "destination_path": "references/architecture.md"
+    },
+    {
+      "part_identifier": "frontend-section-47",
+      "human_title": "Historique de version",
+      "destination_path": "CHANGELOG.md"
+    },
+    {
+      "part_identifier": "frontend-section-48",
+      "human_title": "Conclusion normative",
+      "destination_path": "SKILL.md"
+    }
+  ],
+  "source_frontmatter": {
+    "destination_path": "SKILL.md",
+    "extraction_rule": "Read from the beginning of the file through the closing YAML frontmatter delimiter and its following newline."
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "source_file": "README.md",
+  "source_git_blob_hash": "c43f044faae7f03aa4715f67130ce278cb61a113",
+  "destination_root": ".",
+  "preservation_rule": "The original README is preserved as one exact marked part in the current repository usage guide.",
+  "preserved_parts": [
+    {
+      "part_identifier": "repository-original-readme",
+      "human_title": "README original du dépôt",
+      "destination_path": "docs/repository-usage.md"
+    }
+  ]
+}

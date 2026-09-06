@@ -1,0 +1,7 @@
+interface:
+  display_name: "Frontend React et Vite Enterprise SaaS"
+  short_description: "Concevoir et auditer un frontend SaaS robuste"
+  default_prompt: "Utilise $frontend-react-vite-enterprise-saas-modular-permission-driven pour concevoir ou auditer ce frontend React et Vite."
+
+policy:
+  allow_implicit_invocation: true
