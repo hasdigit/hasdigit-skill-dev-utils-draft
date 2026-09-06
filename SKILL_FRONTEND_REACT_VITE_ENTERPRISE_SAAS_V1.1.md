@@ -206,6 +206,8 @@ Exemples :
 - identifier les états fonctionnels ;
 - identifier les cas d’erreur ;
 - utiliser TypeScript strict ;
+- appliquer les préfixes de typage définis en section 11 à toute nouvelle déclaration de type appartenant au projet ;
+- choisir pour les dossiers, fichiers et symboles des noms qui rendent immédiatement compréhensibles leur domaine et leur responsabilité ;
 - organiser le code par modules puis par features ;
 - rattacher toute feature à un module parent ;
 - attribuer les permissions au niveau qui en est propriétaire : module ou feature ;
@@ -261,6 +263,8 @@ Exemples :
 - créer une boucle de `useEffect`;
 - désactiver arbitrairement `react-hooks/exhaustive-deps`;
 - utiliser `any` sans justification ;
+- utiliser un nom vague, générique ou abrégé lorsque ce nom empêche de comprendre directement le rôle métier ou technique de l’élément ;
+- renommer ou réorganiser du code existant hors du périmètre demandé sous le seul prétexte d’appliquer une convention de nommage ;
 - simuler un bouton avec un `div`;
 - rendre un texte statique éditable ;
 - appliquer `cursor: text` globalement ;
@@ -1307,6 +1311,121 @@ type AsyncState<T> =
 ---
 
 # 11. Conventions de nommage
+
+## Lisibilité immédiate, vocabulaire accessible et préfixes de typage
+
+### Objectif obligatoire
+
+Tout nom créé ou modifié doit aider le lecteur à comprendre immédiatement :
+
+- le domaine métier concerné ;
+- la nature de l’élément ;
+- sa responsabilité principale ;
+- son niveau de portée lorsque celui-ci n’est pas déjà évident par son emplacement.
+
+Cette règle s’applique aux dossiers, fichiers, modules, features, routes, pages, composants, hooks, services, schémas, types, fonctions, variables et constantes.
+
+Le lecteur ne devrait pas avoir à ouvrir le fichier, parcourir toute l’implémentation ou lire une longue documentation pour deviner à quoi sert un élément. La documentation complète le nom ; elle ne doit pas compenser un nom imprécis.
+
+### Vocabulaire à utiliser
+
+L’agent DOIT :
+
+- privilégier les mots métier simples, précis et connus dans le produit ;
+- utiliser le terme le plus court qui reste non ambigu ;
+- nommer d’abord la finalité réelle, puis le mécanisme technique lorsque celui-ci apporte une information utile ;
+- conserver une langue de nommage cohérente dans tout le projet ;
+- développer les acronymes rares ou propres à l’organisation dans le nom ou dans un contexte local immédiatement visible ;
+- qualifier les termes génériques par leur domaine, par exemple `invoice-date.utils.ts` plutôt que `utils.ts` lorsqu’un utilitaire dédié est réellement nécessaire ;
+- employer les termes techniques standards tels que `api`, `route`, `hook`, `schema`, `query` ou `component` uniquement lorsqu’ils décrivent exactement le rôle de l’élément.
+
+L’agent NE DOIT PAS :
+
+- inventer des abréviations ;
+- employer un acronyme non expliqué uniquement pour raccourcir un nom ;
+- utiliser seul un terme fourre-tout comme `data`, `thing`, `stuff`, `misc`, `other`, `general`, `manager`, `helper` ou `utils` lorsqu’il ne révèle pas une responsabilité précise ;
+- choisir un terme très spécialisé lorsqu’un terme courant et exact suffit ;
+- produire des noms excessivement longs en répétant des informations déjà garanties par le dossier parent ;
+- mélanger plusieurs langues dans une même convention de nommage.
+
+Exemples :
+
+| À éviter | Préférer | Raison |
+|---|---|---|
+| `data.ts` | `invoice-payment-summary.types.ts` | Le contenu et le domaine sont identifiables. |
+| `Manager.ts` | `OrganizationAccessPolicyService.ts` | La responsabilité n’est plus implicite. |
+| `utils.ts` | `invoice-date.utils.ts` | Le périmètre de l’utilitaire est explicite. |
+| `Dashboard.tsx` | `BillingOverviewPage.tsx` | La page et son domaine sont reconnaissables. |
+| `useData.ts` | `useOrganizationInvoices.ts` | La donnée réellement chargée est visible. |
+| `Config` | `TenantBrandingConfiguration` | La configuration concernée est précisée. |
+
+### Préfixes obligatoires pour les types TypeScript
+
+Toute déclaration de type nommée appartenant au projet DOIT utiliser un préfixe stable indiquant sa catégorie :
+
+| Catégorie | Préfixe | Exemple |
+|---|---|---|
+| Interface | `I` | `IOrganizationUser`, `IInvoicePageProps` |
+| Alias, union, intersection ou type dérivé | `T` | `TInvoiceStatus`, `TCreateInvoiceRequest` |
+| Enumération TypeScript | `E` | `EPaymentMethod`, `EInvoiceLifecycleStatus` |
+| Paramètre générique | `T` suivi d’un rôle descriptif | `TInvoiceItem`, `TApiResponse` |
+
+Le préfixe ne remplace jamais un nom sémantique complet. `TData`, `IThing`, `EType` et `TItem` sont interdits lorsqu’un nom plus précis peut être donné.
+
+Les suffixes décrivant le rôle restent requis lorsqu’ils sont utiles : `Props`, `State`, `Request`, `Response`, `Payload`, `FormValues`, `Configuration` ou `Options`.
+
+Exemples :
+
+```ts
+interface IOrganizationUser {
+  userId: string;
+  displayName: string;
+}
+
+type TInvoiceStatus = 'draft' | 'issued' | 'paid';
+
+enum EPaymentMethod {
+  BankTransfer = 'bank-transfer',
+  Card = 'card',
+}
+
+interface IInvoicePageProps {
+  organizationId: string;
+}
+
+type TCreateInvoiceRequest = {
+  organizationId: string;
+  customerId: string;
+};
+
+function groupInvoiceItems<TInvoiceItem>(
+  items: TInvoiceItem[],
+): TInvoiceItem[][] {
+  return [items];
+}
+```
+
+Exceptions contrôlées :
+
+- ne pas renommer les types provenant d’une dépendance externe ;
+- ne pas modifier directement les types générés par OpenAPI, GraphQL ou un autre générateur ;
+- conserver un nom imposé par un contrat public existant lorsque le renommer provoquerait une rupture ;
+- adapter si nécessaire un type externe vers un type interne conforme à la frontière du projet.
+
+L’agent ne doit jamais lancer un renommage massif hors périmètre pour imposer cette convention. Dans un fichier déjà modifié pour la tâche en cours, il aligne uniquement les types touchés lorsque cela reste sûr, local et compatible avec les contrats existants.
+
+### Contrôle avant livraison
+
+Avant de terminer une tâche, l’agent vérifie chaque nom ajouté ou modifié avec les questions suivantes :
+
+1. Une personne peut-elle identifier la finalité de l’élément sans ouvrir son implémentation ?
+2. Le domaine métier est-il visible ou fourni sans ambiguïté par le chemin parent ?
+3. Le nom évite-t-il les abréviations, acronymes et termes fourre-tout non expliqués ?
+4. Un type appartenant au projet porte-t-il le préfixe correspondant à sa catégorie ?
+5. Le nom reste-t-il assez concis pour être lu et recherché facilement ?
+6. La modification reste-t-elle strictement dans le périmètre demandé ?
+
+En cas de conflit avec une convention existante explicitement imposée par le projet, l’agent ne décide pas silencieusement : il signale le conflit et applique la convention validée pour le périmètre concerné.
 
 ## Fichiers
 
