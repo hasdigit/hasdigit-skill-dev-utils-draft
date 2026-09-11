@@ -6,6 +6,7 @@ Ce dépôt contient des skills autonomes pour guider des agents d’intelligence
 
 - [Méthode d’orchestration](skills/orchestration/ai-orchestrator-methodology/SKILL.md) : cadrage, état, délégation, preuves, récupération et communication.
 - [Frontend React et Vite Enterprise SaaS](skills/frontend/react/react-vite-enterprise-saas/SKILL.md) : architecture modulaire, permissions, sécurité, accessibilité, tests et livraison.
+- [Next.js Enterprise SaaS](skills/frontend/nextjs/nextjs-enterprise-saas/SKILL.md) : architecture App Router, rendu serveur et client, cache, expérience produit, permissions, sécurité, pages publiques, accessibilité, performance, tests et déploiement.
 
 Chaque skill conserve ses propres références, templates, scénarios et historique. Aucun template métier n’est centralisé à la racine.
 
@@ -17,6 +18,7 @@ Chaque nouvelle session doit commencer par le prompt fourni avec le skill instal
 
 - [Démarrage du skill d’orchestration](skills/orchestration/ai-orchestrator-methodology/installation/installation.md)
 - [Démarrage du skill frontend React et Vite](skills/frontend/react/react-vite-enterprise-saas/installation/installation.md)
+- [Démarrage du skill Next.js](skills/frontend/nextjs/nextjs-enterprise-saas/installation/installation.md)
 
 ## Validation
 
@@ -28,4 +30,4 @@ Le validateur contrôle la structure, les liens, les frontmatters et la reconstr
 
 ## Branche de travail
 
-La restructuration est développée sur la branche `Draft`. La branche `main` conserve l’état validé avant restructuration jusqu’à une nouvelle décision de fusion.
+Les nouveaux travaux sont préparés et validés sur la branche `Draft` avant leur intégration dans `main`. La branche `skill-non-structurer` conserve l’état antérieur à la restructuration.

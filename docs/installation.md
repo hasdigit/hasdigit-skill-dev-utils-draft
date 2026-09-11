@@ -8,6 +8,7 @@ Exemples d’unités installables :
 
 - `skills/orchestration/ai-orchestrator-methodology/`
 - `skills/frontend/react/react-vite-enterprise-saas/`
+- `skills/frontend/nextjs/nextjs-enterprise-saas/`
 
 Dans Codex, le répertoire utilisateur est généralement `$CODEX_HOME/skills`. Lorsque `CODEX_HOME` n’est pas défini, utiliser le répertoire de skills indiqué par l’installation locale.
 
@@ -25,6 +26,7 @@ L’installation technique ne suffit pas à garantir l’application des règles
 
 - [Prompt de démarrage du skill d’orchestration](../skills/orchestration/ai-orchestrator-methodology/installation/installation.md)
 - [Prompt de démarrage du skill frontend React et Vite](../skills/frontend/react/react-vite-enterprise-saas/installation/installation.md)
+- [Prompt de démarrage du skill Next.js](../skills/frontend/nextjs/nextjs-enterprise-saas/installation/installation.md)
 
 Chaque prompt demande à la session de :
 
