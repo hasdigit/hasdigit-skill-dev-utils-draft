@@ -1,7 +1,7 @@
 interface:
-  display_name: "Next.js Enterprise SaaS"
-  short_description: "Concevoir et auditer un produit Next.js SaaS"
-  default_prompt: "Utilise $nextjs-enterprise-saas pour concevoir ou auditer ce produit Next.js professionnel."
+  display_name: "Next.js Frontend Enterprise SaaS"
+  short_description: "Concevoir et auditer un frontend Next.js SaaS"
+  default_prompt: "Utilise $nextjs-enterprise-saas pour concevoir ou auditer ce frontend Next.js professionnel."
 
 policy:
   allow_implicit_invocation: true

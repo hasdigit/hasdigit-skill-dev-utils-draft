@@ -1,9 +1,9 @@
 ---
 name: nextjs-enterprise-saas
-description: Concevoir, développer, auditer ou faire évoluer un produit Next.js et TypeScript professionnel, modulaire, sécurisé, accessible, multi-organisation, personnalisable par marque et déployable sur plusieurs infrastructures. Utiliser ce skill pour une application Next.js existante ou nouvelle; ne pas l’utiliser pour une application React sans Next.js.
+description: Concevoir, développer, auditer ou faire évoluer le frontend d’un produit Next.js et TypeScript professionnel, modulaire, sécurisé, accessible, multi-organisation et personnalisable par marque. Utiliser ce skill lorsque le backend reste externe ou hors périmètre; utiliser le skill Next.js fullstack lorsque la mission inclut aussi routes backend, données, transactions ou tâches serveur.
 metadata:
-  title: Skill Next.js et TypeScript pour produit SaaS professionnel
-  version: "1.0.0"
+  title: Skill frontend Next.js et TypeScript pour produit SaaS professionnel
+  version: "1.0.1"
   language: fr
   status: stable
   intended_users:

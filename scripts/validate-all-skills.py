@@ -112,9 +112,10 @@ def main() -> int:
         REPOSITORY_ROOT / "skills/orchestration/ai-orchestrator-methodology/SKILL.md",
         REPOSITORY_ROOT / "skills/frontend/react/react-vite-enterprise-saas/SKILL.md",
         REPOSITORY_ROOT / "skills/frontend/nextjs/nextjs-enterprise-saas/SKILL.md",
+        REPOSITORY_ROOT / "skills/fullstack/nextjs/nextjs-fullstack-enterprise-saas/SKILL.md",
     }
     if set(skill_paths) != expected_skill_paths:
-        errors.append("les trois unités de skill attendues ne sont pas les seules détectées")
+        errors.append("les quatre unités de skill attendues ne sont pas les seules détectées")
 
     expected_installation_paths = {
         REPOSITORY_ROOT
@@ -123,6 +124,8 @@ def main() -> int:
         / "skills/frontend/react/react-vite-enterprise-saas/installation/installation.md",
         REPOSITORY_ROOT
         / "skills/frontend/nextjs/nextjs-enterprise-saas/installation/installation.md",
+        REPOSITORY_ROOT
+        / "skills/fullstack/nextjs/nextjs-fullstack-enterprise-saas/installation/installation.md",
     }
     for installation_path in expected_installation_paths:
         if not installation_path.is_file():
@@ -155,7 +158,7 @@ def main() -> int:
         return 1
 
     print(
-        "Validation réussie : trois skills valides et trois documents sources "
+        "Validation réussie : quatre skills valides et trois documents sources "
         "reconstruits sans perte."
     )
     return 0

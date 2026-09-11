@@ -6,7 +6,8 @@ Ce dépôt contient des skills autonomes pour guider des agents d’intelligence
 
 - [Méthode d’orchestration](skills/orchestration/ai-orchestrator-methodology/SKILL.md) : cadrage, état, délégation, preuves, récupération et communication.
 - [Frontend React et Vite Enterprise SaaS](skills/frontend/react/react-vite-enterprise-saas/SKILL.md) : architecture modulaire, permissions, sécurité, accessibilité, tests et livraison.
-- [Next.js Enterprise SaaS](skills/frontend/nextjs/nextjs-enterprise-saas/SKILL.md) : architecture App Router, rendu serveur et client, cache, expérience produit, permissions, sécurité, pages publiques, accessibilité, performance, tests et déploiement.
+- [Frontend Next.js Enterprise SaaS](skills/frontend/nextjs/nextjs-enterprise-saas/SKILL.md) : architecture App Router, rendu serveur et client, cache, expérience produit, permissions, sécurité, pages publiques, accessibilité, performance, tests et déploiement lorsque le backend reste externe ou hors périmètre.
+- [Next.js Fullstack Enterprise SaaS](skills/fullstack/nextjs/nextjs-fullstack-enterprise-saas/SKILL.md) : architecture de bout en bout, routes backend, contrats, données, transactions, migrations, tâches durables, intégrations, frontend, sécurité, exploitation et montée en charge.
 
 Chaque skill conserve ses propres références, templates, scénarios et historique. Aucun template métier n’est centralisé à la racine.
 
@@ -18,7 +19,8 @@ Chaque nouvelle session doit commencer par le prompt fourni avec le skill instal
 
 - [Démarrage du skill d’orchestration](skills/orchestration/ai-orchestrator-methodology/installation/installation.md)
 - [Démarrage du skill frontend React et Vite](skills/frontend/react/react-vite-enterprise-saas/installation/installation.md)
-- [Démarrage du skill Next.js](skills/frontend/nextjs/nextjs-enterprise-saas/installation/installation.md)
+- [Démarrage du skill frontend Next.js](skills/frontend/nextjs/nextjs-enterprise-saas/installation/installation.md)
+- [Démarrage du skill Next.js fullstack](skills/fullstack/nextjs/nextjs-fullstack-enterprise-saas/installation/installation.md)
 
 ## Validation
 

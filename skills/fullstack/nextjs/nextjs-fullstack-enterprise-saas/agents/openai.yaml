@@ -1,0 +1,7 @@
+interface:
+  display_name: "Next.js Fullstack Enterprise SaaS"
+  short_description: "Concevoir et auditer un produit Next.js fullstack"
+  default_prompt: "Utilise $nextjs-fullstack-enterprise-saas pour concevoir ou auditer ce produit Next.js fullstack professionnel."
+
+policy:
+  allow_implicit_invocation: true

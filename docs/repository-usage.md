@@ -14,7 +14,8 @@ Le fichier `SKILL.md` contient le cadre essentiel et indique précisément quell
 |---|---|
 | Orchestration d’agents d’intelligence artificielle | `skills/orchestration/ai-orchestrator-methodology/` |
 | Frontend React et Vite | `skills/frontend/react/react-vite-enterprise-saas/` |
-| Application Next.js | `skills/frontend/nextjs/nextjs-enterprise-saas/` |
+| Frontend d’une application Next.js | `skills/frontend/nextjs/nextjs-enterprise-saas/` |
+| Application Next.js fullstack avec backend | `skills/fullstack/nextjs/nextjs-fullstack-enterprise-saas/` |
 
 ## Correspondance avec les anciens documents
 

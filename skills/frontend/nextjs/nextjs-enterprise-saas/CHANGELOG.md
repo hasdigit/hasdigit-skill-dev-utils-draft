@@ -1,5 +1,9 @@
 # Historique des évolutions du skill Next.js
 
+## Version 1.0.1
+
+- Clarification du périmètre frontend et de la frontière avec le skill Next.js fullstack.
+
 ## Version 1.0.0
 
 - Création du skill autonome Next.js et TypeScript pour produit SaaS professionnel.
