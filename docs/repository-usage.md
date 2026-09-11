@@ -8,6 +8,15 @@ Tout ce qui appartient à une compétence reste dans son dossier. Une référenc
 
 Le fichier `SKILL.md` contient le cadre essentiel et indique précisément quelle référence lire selon la tâche. Les fichiers de `references/` contiennent les règles détaillées. Les fichiers de `assets/templates/` sont destinés à être copiés ou adaptés dans un livrable. Les fichiers de `tests/` contrôlent le comportement et la conservation du contenu.
 
+## Skills actuellement disponibles
+
+| Domaine | Unité autonome |
+|---|---|
+| Orchestration d’agents d’intelligence artificielle | `skills/orchestration/ai-orchestrator-methodology/` |
+| Frontend React et Vite | `skills/frontend/react/react-vite-enterprise-saas/` |
+| Frontend d’une application Next.js | `skills/frontend/nextjs/nextjs-enterprise-saas/` |
+| Application Next.js fullstack avec backend | `skills/fullstack/nextjs/nextjs-fullstack-enterprise-saas/` |
+
 ## Correspondance avec les anciens documents
 
 | Ancien document | Nouvelle unité |
